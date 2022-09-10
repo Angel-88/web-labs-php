@@ -10,7 +10,7 @@
         $headers = "From: ".$emailFrom;
         $txt = "You have received an e-mail from ".$name.".\n\n".$message;
 
-        mail($emailTo, $subject, $txt, $headers);
+//        mail($emailTo, $subject, $txt, $headers);
 
         if(mail($emailTo, $subject, $txt, $headers)) {
             header("Location: /");
