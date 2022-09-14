@@ -171,11 +171,6 @@ img{
   background-color: var(--first-color);
 }
 
-/*=== Show menu ===*/
-.show{
-  right: 0;
-}
-
 /*===== HOME =====*/
 .home{
   height: calc(100vh - 3rem);
