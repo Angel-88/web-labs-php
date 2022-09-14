@@ -1,19 +1,48 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require './vendor/autoload.php';
+
+
+$mail = new PHPMailer(true);
+
+$mail->IsSMTP();
+$mail->Host = 'smtp.gmail.com';
+$mail->SMTPAuth = true;
+
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+$mail->Port = 587;
+$mail->CharSet = "UTF-8";
+
 if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
-    $emailTo = $_POST['email'];
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
 
-    $emailFrom = "dasha.zagrebelna88@gmail.com";
-    $headers = "From: ".$emailFrom;
-    $txt = "You have received an e-mail from ".$name.".\n\n".$message;
+    try {
 
-        if(mail($emailTo, $subject, $txt, $headers)) {
-            header("Location: /");
-        } else {
-            echo "Sorry, fail to send email.";
-        }
+        $senderEmail = 'dasha.zagrebelna88@gmail.com';
+        $name = $_POST['name'];
+        $address = $_POST['email'];
+        $subject = $_POST['subject'];
+        $message = $_POST['message'];
+
+        $mail->setFrom($senderEmail, 'Daria Zahrebelna');
+        $mail->Username = $senderEmail;
+        $mail->Password = "oyhkpiqwedvdtatc";
+        $mail->addReplyTo($senderEmail, 'Daria Zahrebelna');
+        $mail->addAddress($address, $name);
+        $mail->Subject = $subject;
+
+        $mail->isHTML(true);
+        $mail->msgHTML($message);
+        $mail->Body = $message;
+
+        $mail->send();
+        echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
 }
+
 ?>
