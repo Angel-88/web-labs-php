@@ -37,12 +37,11 @@ if (!file_exists("oblinfo.txt")) {
     exit;
 }
 
-$fp = fopen("oblinfo.txt", "r");
 $arr = file("oblinfo.txt");
 $elm = array_shift($arr);
 $array = array_chunk($arr, 3);
 
-if (!$fp) {
+if (!$arr) {
     echo "File cannot be opened";
     exit;
 }
@@ -71,8 +70,5 @@ if (!$fp) {
     }
     ?>
 </table>
-<?php
-fclose($fp);
-?>
 </body>
 </html>
