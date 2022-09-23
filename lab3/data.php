@@ -39,14 +39,25 @@ $napr = $_GET["radio"];
 echo "<a href='napr.php'>Повернутись до вибору напрямку</a>";
 echo "<br />";
 
-foreach ($file as $key => $line) {
+foreach ($file
+
+         as $key => $line) {
     if (trim($line) === trim($napr)) {
         $universityCount = $file[$key + 1];
         echo "<table>";
-
         echo $line;
+        ?>
+        <tr>
+            <td class="column__title">Середній бал бюджетників</td>
+            <td class="column__title">Кількість бюджетників</td>
+            <td class="column__title">Недобір</td>
+            <td class="column__title">Кількість контрактників</td>
+            <td class="column__title">Університет</td>
+        </tr>
+        <?php
         for ($i = 0; $i < $universityCount; $i++) {
-            echo "<tr>";
+            echo "
+<tr>";
             $indexOfFirstCol = 2 + $i * 4;
             $indexOfLastCol = $indexOfFirstCol + 3;
             for ($j = $indexOfFirstCol; $j <= $indexOfLastCol; $j++) {
@@ -58,13 +69,21 @@ foreach ($file as $key => $line) {
                     $colValue = "-";
                 }
                 if ($j === $indexOfThirdCol) {
-                    echo "<td>$ned</td>";
-                    echo "<td>$colValue</td>";
+                    echo "
+    <td>$ned</td>
+    ";
+                    echo "
+    <td>$colValue</td>
+    ";
                 } else {
-                    echo "<td>$colValue</td>";
+                    echo "
+    <td>$colValue</td>
+    ";
                 }
             }
-            echo "</tr>";
+            echo "
+</tr>
+";
         }
 
         echo " </table >";
