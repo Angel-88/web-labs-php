@@ -45,7 +45,7 @@ foreach ($matches[1] as $key => $value) {
 $width = 700;
 $height = 400;
 $retreat = 45;
-$font_file = 'BitterPro-Medium.ttf';
+$font_file = './BitterPro-Medium.ttf';
 
 $im = imagecreatetruecolor($width, $height);
 imageantialias($im, true);
