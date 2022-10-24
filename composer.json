@@ -6,6 +6,7 @@
     "ext-gd": "*",
     "symfony/http-client": "^6.1",
     "nyholm/psr7": "^1.5",
-    "ext-dom": "*"
+    "ext-dom": "*",
+    "ext-simplexml": "*"
   }
 }
