@@ -15,10 +15,6 @@
             font-size: 20px;
         }
 
-        p, form, span {
-            text-align: center;
-        }
-
         .container {
             font-size: 24px;
             margin: 25px;
@@ -36,7 +32,10 @@
     </form>
     <br>
     <?php
-    $resultXml = simplexml_load_file("http://ip-api.com/xml/" . $_SERVER['REMOTE_ADDR']);
+
+    $ip = getenv('REMOTE_ADDR', true) ?: getenv('REMOTE_ADDR');
+
+    $resultXml = simplexml_load_file("http://ip-api.com/xml/" . $ip);
     if ($resultXml === FALSE) {
         echo '<p>Помилка при запиті XML!</p>';
         return;

@@ -116,7 +116,7 @@
                 $('#validation-msg').css('display', 'none');
                 $('#result').css('display', 'block');
                 $('#ip').text(res.ip);
-                $('#flag').attr('src', `./src/flags_ISO_3166-1/${res.country_code.toLowerCase()}.png`);
+                $('#flag').attr('src', `../src/flags_ISO_3166-1/${res.country_code.toLowerCase()}.png`);
                 $('#county-code').text(res.country_code);
                 $('#region').text(res.region_code);
                 $('#region-name').text(res.region);
